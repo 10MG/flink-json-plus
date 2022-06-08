@@ -1,23 +1,43 @@
 # flink-json-plus
 
 #### 介绍
-flink-json的增强版，可使用Flink SQL解析Debezium采集数据的op属性
-
-#### 软件架构
-软件架构说明
+flink-json的增强版，可使用Flink SQL解析Debezium采集数据的op属性，解决官方版本的flink-json无法获取op属性的问题。
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  如果使用Flink SQL客户端，则将JAR包上传至flink的lib目录下，重启flink即可使用
+2.  如果使用Table API，则除将JAR包上传至flink的lib目录及重启flink外，还需要再项目中引入该JAR，以Maven项目为例（其中${flink-json-plus.version}为版本号，可定义属性或直接使用版本号替换）：
+
+```
+<!-- https://mvnrepository.com/artifact/cn.tenmg/flink-json-plus-->
+<dependency>
+    <groupId>cn.tenmg</groupId>
+    <artifactId>flink-json-plus</artifactId>
+    <version>${flink-json-plus.version}</version>
+</dependency>
+```
+
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+例如希望将Debezium采集的test表的数据的`op`属性解析出来，可以使用如下Flink SQL创建源表（Source Table）：
+
+```
+CREATE TABLE test(
+  id STRING NOT NULL,
+  name STRING NOT NULL,
+  op STRING
+)
+WITH (
+  'properties.bootstrap.servers' = 'kafka1:9092,kafka2:9092,kafka3:9092',
+  'properties.group.id' = 'flink-jobs-data-sync.test',
+  'topic' = 'test.testdb.test', 'connector' = 'kafka',
+  'scan.startup.mode' = 'earliest-offset',
+ 'format'='debezium-json-plus'
+)
+
+```
 
 #### 参与贡献
 
@@ -25,13 +45,3 @@ flink-json的增强版，可使用Flink SQL解析Debezium采集数据的op属性
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
