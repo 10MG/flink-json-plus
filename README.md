@@ -1,7 +1,7 @@
 # flink-json-plus
 
 #### 介绍
-flink-json的增强版，可使用Flink SQL解析Debezium采集数据的op属性，解决官方版本的flink-json无法获取op属性的问题。
+flink-json的增强版，可使用Flink SQL解析Debezium采集数据的`op`属性，解决官方版本的flink-json无法获取op属性的问题。
 
 
 #### 安装教程
