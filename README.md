@@ -7,7 +7,7 @@ flink-json的增强版，可使用Flink SQL解析Debezium采集数据的`op`属�
 #### 安装教程
 
 1.  如果使用Flink SQL客户端，则将JAR包上传至flink的lib目录下，重启flink即可使用
-2.  如果使用Table API，则除将JAR包上传至flink的lib目录及重启flink外，还需要再项目中引入该JAR，以Maven项目为例（其中${flink-json-plus.version}为版本号，可定义属性或直接使用版本号替换）：
+2.  如果使用Table API，则除将JAR包上传至flink的lib目录及重启flink外，还需要在项目中引入该JAR，以Maven项目为例（其中${flink-json-plus.version}为版本号，可定义属性或直接使用版本号替换）：
 
 ```
 <!-- https://mvnrepository.com/artifact/cn.tenmg/flink-json-plus -->
