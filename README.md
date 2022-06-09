@@ -52,7 +52,7 @@ flink-json-plus 目前支持将 Debezium JSON 消息解析为 INSERT / UPDATE / 
 - 数据库的实时物化视图
 - 关联维度数据库的变更历史，等等。
 
-Flink 还支持将 Flink SQL 中的 INSERT / UPDATE / DELETE 消息编码为 Debezium 格式的 JSON 消息，输出到 Kafka 等存储中。 但需要注意的是，目前 flink-json-plus 还不支持将 UPDATE_BEFORE 和 UPDATE_AFTER 合并为一条 UPDATE 消息。因此，Flink 将 UPDATE_BEFORE 和 UPDATE_AFTER 分别编码为 DELETE 和 INSERT 类型的 Debezium 消息。
+flink-json-plus 还支持将 Flink SQL 中的 INSERT / UPDATE / DELETE 消息编码为 Debezium 格式的 JSON 消息，输出到 Kafka 等存储中。 但需要注意的是，目前 flink-json-plus 还不支持将 UPDATE_BEFORE 和 UPDATE_AFTER 合并为一条 UPDATE 消息。因此，Flink 将 UPDATE_BEFORE 和 UPDATE_AFTER 分别编码为 DELETE 和 INSERT 类型的 Debezium 消息。
 
  _注意：_  请参考 Debezium 文档，了解如何设置 Debezium Kafka Connect 用来将变更日志同步到 Kafka 主题。
 
