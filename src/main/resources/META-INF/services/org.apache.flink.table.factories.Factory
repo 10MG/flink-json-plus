@@ -13,4 +13,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cn.tenmg.flink.formats.json.DebeziumJsonPlusFormatFactory
+cn.tenmg.flink.formats.json.debezium.DebeziumJsonPlusFormatFactory

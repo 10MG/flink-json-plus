@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package cn.tenmg.flink.formats.json;
+package cn.tenmg.flink.formats.json.debezium;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -41,7 +41,7 @@ import org.apache.flink.table.types.DataType;
 import org.apache.flink.table.types.utils.DataTypeUtils;
 import org.apache.flink.types.RowKind;
 
-import cn.tenmg.flink.formats.json.DebeziumJsonPlusDeserializationSchema.MetadataConverter;
+import cn.tenmg.flink.formats.json.debezium.DebeziumJsonPlusDeserializationSchema.MetadataConverter;
 
 /** {@link DecodingFormat} for Debezium using JSON encoding. */
 public class DebeziumJsonPlusDecodingFormat implements DecodingFormat<DeserializationSchema<RowData>> {
@@ -60,12 +60,15 @@ public class DebeziumJsonPlusDecodingFormat implements DecodingFormat<Deserializ
 
 	private final boolean ignoreParseErrors;
 
+	private final boolean convertDeleteToUpdate;
+
 	private final TimestampFormat timestampFormat;
 
 	public DebeziumJsonPlusDecodingFormat(boolean schemaInclude, boolean ignoreParseErrors,
-			TimestampFormat timestampFormat) {
+			boolean convertDeleteToUpdate, TimestampFormat timestampFormat) {
 		this.schemaInclude = schemaInclude;
 		this.ignoreParseErrors = ignoreParseErrors;
+		this.convertDeleteToUpdate = convertDeleteToUpdate;
 		this.timestampFormat = timestampFormat;
 		this.metadataKeys = Collections.emptyList();
 	}
@@ -87,7 +90,7 @@ public class DebeziumJsonPlusDecodingFormat implements DecodingFormat<Deserializ
 		final TypeInformation<RowData> producedTypeInfo = context.createTypeInformation(producedDataType);
 
 		return new DebeziumJsonPlusDeserializationSchema(physicalDataType, readableMetadata, producedTypeInfo,
-				schemaInclude, ignoreParseErrors, timestampFormat);
+				schemaInclude, ignoreParseErrors, convertDeleteToUpdate, timestampFormat);
 	}
 
 	@Override
