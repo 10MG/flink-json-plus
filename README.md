@@ -34,7 +34,7 @@ WITH (
   'properties.group.id' = 'flink-jobs-data-sync.test',
   'topic' = 'test.testdb.test', 'connector' = 'kafka',
   'scan.startup.mode' = 'earliest-offset',
- 'format'='debezium-json-plus'
+  'format'='debezium-json-plus'
 )
 
 ```
