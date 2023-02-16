@@ -63,6 +63,46 @@ flink-json-plus 还支持将 Flink SQL 中的 INSERT / UPDATE / DELETE 消息编
 
  _注意：_  请参考 Debezium 文档，了解如何设置 Debezium Kafka Connect 用来将变更日志同步到 Kafka 主题。
 
+## 问题解答
+
+### SQL Client
+
+
+ **问题描述：** 在Flink SQL Client 中使用 [flink-json-plus](https://gitee.com/tenmg/flink-json-plus)，加入 [flink-json-plus](https://gitee.com/tenmg/flink-json-plus) 依赖后。
+
+1. 创建源表
+
+```
+DROP TABLE IF EXISTS table_process;
+CREATE TABLE table_process (
+id BIGINT,
+name STRING,
+create_time TIMESTAMP,
+update_time TIMESTAMP
+) WITH (
+'properties.bootstrap.servers' = 'hadoop101:9092',
+'topic' = 'input_kafka',
+'connector' = 'kafka',
+'scan.startup.mode' = 'earliest-offset',
+'format'='debezium-json-plus'
+);
+```
+
+
+2. 执行查询
+
+```
+select * from table_process;
+```
+
+3. 发生异常
+
+```
+Could not initialize class cn.tenmg.flink.formats.json.debezium.DebeziumJsonPlusFormatOptions
+```
+
+
+ **解决方案：** [https://gitee.com/tenmg/flink-json-plus/issues/I6FGR7](https://gitee.com/tenmg/flink-json-plus/issues/I6FGR7)
 
 ## 参与贡献
 
