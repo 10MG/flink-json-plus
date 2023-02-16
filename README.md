@@ -102,7 +102,7 @@ Could not initialize class cn.tenmg.flink.formats.json.debezium.DebeziumJsonPlus
 ```
 
 
- **解决方案：** [https://gitee.com/tenmg/flink-json-plus/issues/I6FGR7](https://gitee.com/tenmg/flink-json-plus/issues/I6FGR7)
+ **解决方案：** [https://gitee.com/tenmg/flink-json-plus/issues/I6FGR7#note_16275275_link](https://gitee.com/tenmg/flink-json-plus/issues/I6FGR7#note_16275275_link)
 
 ## 参与贡献
 
