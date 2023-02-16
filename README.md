@@ -1,5 +1,12 @@
 # flink-json-plus
 
+<p align="left">
+    <a href="https://mvnrepository.com/artifact/cn.tenmg/flink-json-plus">
+        <img alt="maven" src="https://img.shields.io/maven-central/v/cn.tenmg/flink-json-plus.svg?style=flat-square">
+    </a>
+    <a target="_blank" href="LICENSE"><img src="https://img.shields.io/:license-Apache%202.0-blue.svg"></a>
+</p>
+
 ## 介绍
 flink-json的增强版，可使用Flink SQL解析Debezium采集数据的`op`属性，解决官方版本的flink-json无法获取op属性的问题。
 
